@@ -14,11 +14,13 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 @Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)  //this creates the equals and hash methods for all the property ,the attribute onlyExplicitlyIncluded = true  saying only generate the methods if explicitely mention above the property
 @Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @EqualsAndHashCode.Include  // we are explicitly mentioning that generate the equals and hash methods for this field
     private Long id;
 
     @Column(name = "name")
@@ -29,6 +31,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
