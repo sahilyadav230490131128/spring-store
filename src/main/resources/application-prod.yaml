@@ -1,5 +1,6 @@
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
-
+  flyway:
+    repair: true
 websiteUrl: https://mystore.com
