@@ -1,5 +1,5 @@
 CREATE TABLE `store_api`.`cart` (
-  `id` BINARY(16) NOT NULL DEFAULT (uuid_to_bin(uuid())),
+  `id` BINARY(16) NOT NULL
   `date_created` DATE NOT NULL DEFAULT (curdate()),
   PRIMARY KEY (`id`));
 
